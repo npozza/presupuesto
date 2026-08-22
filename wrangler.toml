@@ -1,0 +1,48 @@
+name = "brote"
+compatibility_date = "2026-08-01"
+
+# Sirve la carpeta public/ como sitio estático.
+# not_found_handling = single-page-application: cualquier ruta devuelve index.html,
+# que es lo que necesita una SPA con navegación del lado del cliente.
+[assets]
+directory = "./public"
+not_found_handling = "single-page-application"
+
+[observability]
+enabled = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Todo lo que sigue está comentado a propósito: el prototipo no lo usa todavía.
+# Se va descomentando a medida que aparece el backend, siguiendo DEPLOY.md.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# main = "src/worker/index.ts"
+# compatibility_flags = ["nodejs_compat"]
+
+# [vars]
+# APP_URL = "https://brote.example.com"
+# GOOGLE_CLIENT_ID = "xxxxxxxx.apps.googleusercontent.com"
+# DEFAULT_TIMEZONE = "America/Argentina/Buenos_Aires"
+# IPC_PROJECTED_MONTHLY_PCT = "2.0"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "brote"
+# database_id = "REEMPLAZAR"
+
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "REEMPLAZAR"
+
+# [[r2_buckets]]
+# binding = "RECEIPTS"
+# bucket_name = "brote-receipts"
+
+# Horarios en UTC. ART = UTC-3. Ver DEPLOY.md §5.
+# [triggers]
+# crons = [
+#   "0 14 * * *",    # 11:00 ART — cotizaciones BNA + xe
+#   "0 */6 * * *",   # cada 6 h — refresco de precios por lotes
+#   "0 15 15 * *",   # día 15, 12:00 ART — IPC del INDEC
+#   "0 12 * * *"     # 9:00 ART — alertas de vencimientos y bajas de precio
+# ]
